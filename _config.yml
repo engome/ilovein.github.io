@@ -86,10 +86,22 @@ menu:
   home: /
   archives: /archives
   tags: /tags
-disqus_shortname: 
+  
+scheme: Pisces
+
+disqus:
+  enable: true
+  shortname: disqus_ry9PMjhgy6
+  count: true
+
 social:
   GitHub: https://github.com/leopoo/
-highlight_theme: night blue
-fancybox: true
+
+local_search:
+  enable: true
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
 since: 2017
-favicon: /favicon.ico
