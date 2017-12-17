@@ -21,3 +21,5 @@ cabal.project.local
 .ghc.environment.*
 node_modules
 public
+.deploy_git
+package-lock.json
