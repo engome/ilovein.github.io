@@ -7,7 +7,7 @@ title: Leopoo
 subtitle: 愿不负韶华
 description: 愿不负韶华
 author: leopoo
-language: zh-CN
+language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -80,3 +80,16 @@ deploy:
   type: git
   repo: https://github.com/leopoo/leopoo.github.io.git
   branch: master
+
+# next config
+menu:
+  home: /
+  archives: /archives
+  tags: /tags
+disqus_shortname: 
+social:
+  GitHub: https://github.com/leopoo/
+highlight_theme: night blue
+fancybox: true
+since: 2017
+favicon: /favicon.ico
