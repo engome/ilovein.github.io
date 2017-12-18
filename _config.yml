@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Leopoo
-subtitle: 愿不负韶华
-description: 愿不负韶华
-author: leopoo
+title: Leopoo'blog
+subtitle: Write something
+description:
+author: Leopoo
 language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.leopoo.com
+url: http://yoursite.com
 root: /
 permalink: :year/:title/
 permalink_defaults:
@@ -80,28 +80,3 @@ deploy:
   type: git
   repo: https://github.com/leopoo/leopoo.github.io.git
   branch: master
-
-# next config
-menu:
-  home: /
-  archives: /archives
-  tags: /tags
-  
-scheme: Pisces
-
-disqus:
-  enable: true
-  shortname: disqus_ry9PMjhgy6
-  count: true
-
-social:
-  GitHub: https://github.com/leopoo/
-
-local_search:
-  enable: true
-search:
-  path: search.xml
-  field: post
-  format: html
-  limit: 10000
-since: 2017
