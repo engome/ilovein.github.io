@@ -1,9 +1,9 @@
 ---
-title: lede-k3-compile-syncdial
+title: Ubuntu for Win10 编译K3 syncdial 单线多拨
 date: 2018-01-20 01:37:15
 tags:
 ---
-# Ubuntu for Win10 编译K3 syncdial 单线多拨
+
 K3刷了LEDE想单线多拨，发现软件源内syncdial。手动设置感觉麻烦(没设置过啊，一键多好)
 ![脸上笑嘻嘻,心里MMP](lede-k3-compile-syncdial/1516378730321.png)
 
