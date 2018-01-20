@@ -29,9 +29,29 @@ sudo apt-get update
 sudo apt-get install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev
 ```
 
-## 编译luci-app-syncdial 
+将源码下载到package目录下面
 
+链接: https://pan.baidu.com/s/1pMPhJ5L 密码: fu6r
+
+## 编译luci-app-syncdial
+
+```bash
+make menuconfig
+# 选择 Luci > Application > luci-app-syncdial
+# 保存
+make package/luci-app-syncdial/compile V=99
 ```
+编译完成后文件在`bin`目录下面
 
+## 安装
+通过winscp上传路由器
+```bash
+opkg install luci-app-syncdial_2.0-22_all.ipk
+```
+然后进入路由器web管理页面就完事大吉
+![图片](lede-k3-compile-syncdial/4265434.PNG)
 
+## 测试结果
+我的宽带是20MB的, 电脑连接wifi所以没有达到下载三拨的慢速,上传已经是慢速了
+![图片](lede-k3-compile-syncdial/6982504044.png)
 > MARK 软件包来自[https://github.com/coolsnowwolf/lede](https://github.com/coolsnowwolf/lede/)
