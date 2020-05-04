@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Leopoo'blog
+title: ZhangSan'blog
 subtitle: Write something
 description:
-author: Leopoo
+author: ZhangSan
 language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://www.leopoo.com
+url: https://www.engo.me
 root: /
 permalink: :year/:title/
 permalink_defaults:
@@ -78,5 +78,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/leopoo/leopoo.github.io.git
+  repo: https://github.com/engome/engome.github.io.git
   branch: master
