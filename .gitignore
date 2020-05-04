@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
 tmp
-themes/next
 public
+themes/next/*
+!themes/next/_config.yml
