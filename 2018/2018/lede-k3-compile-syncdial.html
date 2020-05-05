@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
+<meta name="referrer" content="no-referrer" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -23,21 +24,22 @@
   <meta name="description" content="K3刷了LEDE想单线多拨，发现软件源内没有syncdial。手动设置感觉麻烦(没设置过啊，一键多好) 编译需要在Linux环境下，虚拟机不想折腾了。。懒得装的，所以用Ubuntu for Win10来试试（在微软商店下载），然后 控制面板 &gt; 程序 &gt; 启动或关闭Windows功能勾上适用于Linux的Windows子系统 下载LEDE K3 SDK 可以在windows下载, 也可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WSL Ubuntu 编译K3 syncdial 单线多拨">
-<meta property="og:url" content="https://www.engo.me/2018/lede-k3-compile-syncdial/index.html">
-<meta property="og:site_name" content="zhangsan&#39;blog">
+<meta property="og:url" content="http://www.engo.me/2018/2018/lede-k3-compile-syncdial.html">
+<meta property="og:site_name" content="啤酒小龙虾">
 <meta property="og:description" content="K3刷了LEDE想单线多拨，发现软件源内没有syncdial。手动设置感觉麻烦(没设置过啊，一键多好) 编译需要在Linux环境下，虚拟机不想折腾了。。懒得装的，所以用Ubuntu for Win10来试试（在微软商店下载），然后 控制面板 &gt; 程序 &gt; 启动或关闭Windows功能勾上适用于Linux的Windows子系统 下载LEDE K3 SDK 可以在windows下载, 也可">
-<meta property="og:image" content="https://www.engo.me/2018/lede-k3-compile-syncdial/lede-k3-compile-syncdial/1516378730321.png">
-<meta property="og:image" content="https://www.engo.me/2018/lede-k3-compile-syncdial/lede-k3-compile-syncdial/4265434.PNG">
-<meta property="og:image" content="https://www.engo.me/2018/lede-k3-compile-syncdial/lede-k3-compile-syncdial/6982504044.png">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.engo.me/images/lede-k3-compile-syncdial/1516378730321.png">
+<meta property="og:image" content="http://www.engo.me/images/lede-k3-compile-syncdial/4265434.PNG">
+<meta property="og:image" content="http://www.engo.me/images/lede-k3-compile-syncdial/6982504044.png">
 <meta property="article:published_time" content="2018-01-19T17:37:15.000Z">
-<meta property="article:modified_time" content="2020-05-04T13:03:06.278Z">
+<meta property="article:modified_time" content="2020-05-04T16:23:29.202Z">
 <meta property="article:author" content="zhangsan">
 <meta property="article:tag" content="SSL">
 <meta property="article:tag" content="HTTPS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.engo.me/2018/lede-k3-compile-syncdial/lede-k3-compile-syncdial/1516378730321.png">
+<meta name="twitter:image" content="http://www.engo.me/images/lede-k3-compile-syncdial/1516378730321.png">
 
-<link rel="canonical" href="https://www.engo.me/2018/lede-k3-compile-syncdial/">
+<link rel="canonical" href="http://www.engo.me/2018/2018/lede-k3-compile-syncdial.html">
 
 
 <script id="page-configurations">
@@ -46,11 +48,11 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-Hans'
+    lang   : 'zh-CN'
   };
 </script>
 
-  <title>WSL Ubuntu 编译K3 syncdial 单线多拨 | zhangsan'blog</title>
+  <title>WSL Ubuntu 编译K3 syncdial 单线多拨 | 啤酒小龙虾</title>
   
 
 
@@ -90,7 +92,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -101,7 +103,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">zhangsan'blog</h1>
+      <h1 class="site-title">啤酒小龙虾</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">Write something</p>
@@ -120,22 +122,12 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
   </ul>
@@ -165,17 +157,17 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.engo.me/2018/lede-k3-compile-syncdial/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2018/2018/lede-k3-compile-syncdial.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/touxiang.jpg">
+      <meta itemprop="image" content="/images/touxiang.jpg">
       <meta itemprop="name" content="zhangsan">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhangsan'blog">
+      <meta itemprop="name" content="啤酒小龙虾">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -187,22 +179,22 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2018-01-20 01:37:15" itemprop="dateCreated datePublished" datetime="2018-01-20T01:37:15+08:00">2018-01-20</time>
+              <time title="创建时间：2018-01-20 01:37:15" itemprop="dateCreated datePublished" datetime="2018-01-20T01:37:15+08:00">2018-01-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-04 21:03:06" itemprop="dateModified" datetime="2020-05-04T21:03:06+08:00">2020-05-04</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-05 00:23:29" itemprop="dateModified" datetime="2020-05-05T00:23:29+08:00">2020-05-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%8A%98%E8%85%BE/" itemprop="url" rel="index"><span itemprop="name">折腾</span></a>
                 </span>
@@ -219,22 +211,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>K3刷了LEDE想单线多拨，发现软件源内没有syncdial。手动设置感觉麻烦(没设置过啊，一键多好)<br><img src="lede-k3-compile-syncdial/1516378730321.png" alt="脸上笑嘻嘻,心里MMP"></p>
+        <p>K3刷了LEDE想单线多拨，发现软件源内没有syncdial。手动设置感觉麻烦(没设置过啊，一键多好)<br><img src="/images/lede-k3-compile-syncdial/1516378730321.png" alt="脸上笑嘻嘻,心里MMP"></p>
 <p>编译需要在Linux环境下，虚拟机不想折腾了。。懒得装的，所以用Ubuntu for Win10来试试（在微软商店下载），然后 控制面板 &gt; 程序 &gt; 启动或关闭Windows功能<br>勾上<code>适用于Linux的Windows子系统</code></p>
 <h2 id="下载LEDE-K3-SDK"><a href="#下载LEDE-K3-SDK" class="headerlink" title="下载LEDE K3 SDK"></a>下载LEDE K3 SDK</h2><blockquote>
 <p>可以在windows下载, 也可以在ubuntu wget</p>
 </blockquote>
-<p>中国科大提供了openwrt镜像和代理连接<a href="openwrt.proxy.ustclug.org">    openwrt.proxy.ustclug.org</a><br>SDK地址:<a href="http://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz" target="_blank" rel="noopener">lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64</a></p>
+<p>中国科大提供了openwrt镜像和代理连接<a href="openwrt.proxy.ustclug.org">openwrt.proxy.ustclug.org</a><br>SDK地址:<a href="http://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz" target="_blank" rel="noopener">lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到D盘目录并建立文件夹lede</span></span><br><span class="line"><span class="built_in">cd</span> /mnt/d/ &amp;&amp; mkdir lede</span><br><span class="line"><span class="comment">#下载SDK</span></span><br><span class="line">wget http://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz</span><br><span class="line"><span class="comment"># 解压SDK 到lede-sdk目录</span></span><br><span class="line">tar xvJf lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz -C lede-sdk</span><br><span class="line"><span class="comment"># 切换到sdk目录</span></span><br><span class="line"><span class="built_in">cd</span> lede-sdk</span><br><span class="line"><span class="comment"># 安装依赖软件</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev</span><br></pre></td></tr></table></figure>
 
 <p>将源码下载到package目录下面</p>
 <p>链接: <a href="https://pan.baidu.com/s/1pMPhJ5L" target="_blank" rel="noopener">https://pan.baidu.com/s/1pMPhJ5L</a> 密码: fu6r</p>
 <h2 id="编译luci-app-syncdial"><a href="#编译luci-app-syncdial" class="headerlink" title="编译luci-app-syncdial"></a>编译luci-app-syncdial</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br><span class="line"><span class="comment"># 选择 Luci &gt; Application &gt; luci-app-syncdial</span></span><br><span class="line"><span class="comment"># 保存</span></span><br><span class="line">make package/luci-app-syncdial/compile V=99</span><br></pre></td></tr></table></figure>
+
 <p>编译完成后文件在<code>bin</code>目录下面</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>通过winscp上传路由器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg install luci-app-syncdial_2.0-22_all.ipk</span><br></pre></td></tr></table></figure>
-<p>然后进入路由器web管理页面就完事大吉<br><img src="lede-k3-compile-syncdial/4265434.PNG" alt="图片"></p>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p>我的宽带是20MB的, 电脑连接wifi所以没有达到下载三拨的慢速,上传已经是慢速了<br><img src="lede-k3-compile-syncdial/6982504044.png" alt="图片"></p>
+
+<p>然后进入路由器web管理页面就完事大吉<br><img src="/images/lede-k3-compile-syncdial/4265434.PNG" alt="图片"></p>
+<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p>我的宽带是20MB的, 电脑连接wifi所以没有达到下载三拨的慢速,上传已经是慢速了<br><img src="/images/lede-k3-compile-syncdial/6982504044.png" alt="图片"></p>
 <blockquote>
 <p>MARK 软件包来自<a href="https://github.com/coolsnowwolf/lede/" target="_blank" rel="noopener">https://github.com/coolsnowwolf/lede</a></p>
 </blockquote>
@@ -258,7 +252,7 @@
     <div class="post-nav">
       <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2018/ssl-x509-to-der/" rel="next" title="HTTPS SSL证书格式转换">
+    <a href="/2018/2018/ssl-x509-to-der.html" rel="next" title="HTTPS SSL证书格式转换">
       HTTPS SSL证书格式转换 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -310,10 +304,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -326,7 +320,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="zhangsan"
-      src="/uploads/touxiang.jpg">
+      src="/images/touxiang.jpg">
   <p class="site-author-name" itemprop="name">zhangsan</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -335,17 +329,17 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">categories</span>
+        <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">tags</span>
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
@@ -359,6 +353,16 @@
   </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.engo.me/" title="http:&#x2F;&#x2F;www.engo.me">Title</a>
+        </li>
+    </ul>
+  </div>
 
       </div>
 
@@ -385,7 +389,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">zhangsan</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
