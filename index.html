@@ -305,7 +305,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2021/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
+    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2020/wsl-ubuntu-aliyun-source.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/touxiang.jpg">
@@ -319,7 +319,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html" class="post-title-link" itemprop="url">薅美帝企业羊毛-白嫖Oracle cloud 永久免费VPS</a>
+            <a href="/2020/wsl-ubuntu-aliyun-source.html" class="post-title-link" itemprop="url">WSL-Ubuntu-18.04 阿里云源</a>
         </h2>
 
         <div class="post-meta">
@@ -329,8 +329,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-05-30 22:46:26" itemprop="dateCreated datePublished" datetime="2021-05-30T22:46:26+08:00">2021-05-30</time>
+              <time title="创建时间：2020-05-04 22:05:39" itemprop="dateCreated datePublished" datetime="2020-05-04T22:05:39+08:00">2020-05-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-30 21:44:49" itemprop="dateModified" datetime="2021-05-30T21:44:49+08:00">2021-05-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -352,185 +359,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>最近在科学工具不太稳定，急需一台 backup 来自动切换以备不时之需。之前听说过 Oracle Cloud VPS 可以永久免费使用，这次尝试白嫖下，没想到一下就成功了。故作次记录<br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622387871475-6122b79a-8d6a-4a16-894e-9d1d2e0d077d.png#align=left&display=inline&height=435&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1112&originWidth=778&size=408354&status=done&style=none&width=304" alt="image.png"></p>
-<h3 id="前提条件："><a href="#前提条件：" class="headerlink" title="前提条件："></a>前提条件：</h3><p>你必须要要有张信用卡，可以是 VSIA，MasterCard 都行，会进行扣款认证。<br>你可能需要一把梯子，我的移动的网有时候会很访问很慢</p>
-<h3 id="注册-amp-绑卡"><a href="#注册-amp-绑卡" class="headerlink" title="注册 &amp; 绑卡"></a>注册 &amp; 绑卡</h3><p><a target="_blank" rel="noopener" href="https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=zh_CN">https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&amp;language=zh_CN</a><br>按正常信息即可，注册，绑卡时我都没得问题（平安车主卡）</p>
-<h4 id="创建-vm"><a href="#创建-vm" class="headerlink" title="创建 vm"></a>创建 vm</h4><p>进入主页：<a target="_blank" rel="noopener" href="https://cloud.oracle.com/?region=ap-seoul-1">https://cloud.oracle.com/?region=ap-seoul-1</a><br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622388458965-ac949e9f-267a-4928-83d9-78e2052c2c24.png#align=left&display=inline&height=216&margin=%5Bobject%20Object%5D&name=image.png&originHeight=432&originWidth=890&size=31729&status=done&style=none&width=445" alt="image.png"></p>
-<h4 id="选择镜像"><a href="#选择镜像" class="headerlink" title="选择镜像"></a>选择镜像</h4><p>选择你要有的镜像，Ubuntn Centos 这些都可以<br><em><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622388578857-746c35a8-df05-468f-bd7e-bd40a09532c2.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1362&originWidth=2244&size=236416&status=done&style=none&width=1122" alt="image.png"></em><br>在配置 vm 的时候注意要有这个条件的 <strong>_符合始终免费条件 _</strong>_ ，_1 个核心 OCPU，1 GB 内存，0.48 Gbps 网络带宽(通常只有 50Mbps，每个 VM 是 1/8 的配置，CPU 和带宽都是 1/8)</p>
-<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>默认即可，如果 IP 时被 Q 的，国内无法访问。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622389022684-2b58eba4-6711-4169-97f0-099cb64da80e.png#align=left&display=inline&height=605&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1210&originWidth=1632&size=167686&status=done&style=none&width=816" alt="image.png"><br>可以通过这个网站检测 <a target="_blank" rel="noopener" href="https://www.vps234.com/ipchecker/">https://www.vps234.com/ipchecker</a> 国内 tcp 可以访问即可<br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622389124138-cd8a908c-4e69-4ab8-b957-d0ae0907ca4e.png#align=left&display=inline&height=181&margin=%5Bobject%20Object%5D&name=image.png&originHeight=362&originWidth=900&size=16319&status=done&style=none&width=450" alt="image.png"></p>
-<p>如果被 Q 可以重新分配 IP： 在 附加的 VNIC， 查看详细信息里面可修改<br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622389570039-a824bbc8-7158-447b-b7c0-77ce6ee84325.png#align=left&display=inline&height=262&margin=%5Bobject%20Object%5D&name=image.png&originHeight=524&originWidth=2258&size=120203&status=done&style=none&width=1129" alt="image.png"></p>
-<h4 id="登陆-vm"><a href="#登陆-vm" class="headerlink" title="登陆 vm"></a>登陆 vm</h4><p>在创建 vm 的时候需要保持 ssh 密钥或者自己上传已有的密钥，否则你无法远程登陆<br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622390472489-4936d7cc-2f50-45ce-8bbc-bd0056f47055.png#align=left&display=inline&height=293&margin=%5Bobject%20Object%5D&name=image.png&originHeight=586&originWidth=2190&size=110576&status=done&style=none&width=1095" alt="image.png"><br>oracle cloud vm 首次无法远程 root 账户登陆<br>如果 vm 是 Linux, CentOS, or Windows 你的用户名为 opc<br>如果 vm 是 Ubuntu 你的用户名是 ubuntu<br>使用密钥登陆：ubuntu@ip or opc@ip</p>
-<p>参考文档：<a target="_blank" rel="noopener" href="https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/accessinginstance.htm#Prerequi">https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/accessinginstance.htm#Prerequi</a></p>
+          <p>windows subsystem linux ubuntu安装的版本默认源仓库在国外,此文为替换国内源一个记录,同时适用于所有Ubuntu-18.04系统</p>
+<p>阿里云源地址:<a href="https://developer.aliyun.com/mirror/" target="_blank" rel="noopener">https://developer.aliyun.com/mirror/</a></p>
+<h4 id="查看现有ubuntu软件源信息"><a href="#查看现有ubuntu软件源信息" class="headerlink" title="查看现有ubuntu软件源信息"></a>查看现有ubuntu软件源信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
+<p><strong>结果：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to</span></span><br><span class="line"><span class="comment"># newer versions of the distribution.</span></span><br><span class="line">deb http://archive.ubuntu.com/ubuntu/ bionic main restricted</span><br><span class="line"><span class="comment"># deb-src http://archive.ubuntu.com/ubuntu/ bionic main restricted</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Major bug fix updates produced after the final release of the</span></span><br><span class="line"><span class="comment">## distribution.</span></span><br><span class="line">deb http://archive.ubuntu.com/ubuntu/ bionic-updates main restricted</span><br><span class="line"><span class="comment"># deb-src http://archive.ubuntu.com/ubuntu/ bionic-updates main restricted</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</span></span><br><span class="line"><span class="comment">## team. Also, please note that software in universe WILL NOT receive any</span></span><br><span class="line"><span class="comment">## review or updates from the Ubuntu security team.</span></span><br><span class="line">deb http://archive.ubuntu.com/ubuntu/ bionic universe</span><br><span class="line"><span class="comment"># deb-src http://archive.ubuntu.com/ubuntu/ bionic universe</span></span><br><span class="line">deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe</span><br><span class="line"><span class="comment"># deb-src http://archive.ubuntu.com/ubuntu/ bionic-updates universe</span></span><br><span class="line">....</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2020/DQ77KB-AMT-reset-password.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-      <meta itemprop="name" content="zhangsan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="啤酒小龙虾">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/DQ77KB-AMT-reset-password.html" class="post-title-link" itemprop="url">DQ77KB-AMT-reset-password</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-10 14:26:32" itemprop="dateCreated datePublished" datetime="2020-05-10T14:26:32+08:00">2020-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>之前有一块板子做软路由，闲置很久了，导致 intl AMT 密码遗忘，找了很久的资料终于重置成功了</p>
-<ol>
-<li>断掉电源</li>
-<li>找到主板跳线<img src="https://cdn.nlark.com/yuque/0/2020/png/218708/1589092275960-e5b2d0e4-72d2-4968-9f46-c6d224f086ef.png#align=left&display=inline&height=507&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1013&originWidth=1837&size=4874864&status=done&style=none&width=918.5" alt="image.png"></li>
-<li>移动主板跳线<img src="https://cdn.nlark.com/yuque/0/2020/png/218708/1589092425476-a7edd57b-7b04-4a81-a275-19d407bd6bba.png#align=left&display=inline&height=464&margin=%5Bobject%20Object%5D&name=image.png&originHeight=928&originWidth=1418&size=3243239&status=done&style=none&width=709" alt="image.png"></li>
-<li>通电开机进入设置<img src="https://cdn.nlark.com/yuque/0/2020/png/218708/1589092501713-a5a27288-6afe-4f7c-8817-696927bcb173.png#align=left&display=inline&height=520&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1039&originWidth=2028&size=3575982&status=done&style=none&width=1014" alt="image.png"></li>
-<li>Reset Intel AMT</li>
-<li>关机，断电</li>
-<li>还原跳线，通电开机，Ctrl + P 即可进入 AMT 输入默认密码即可</li>
-<li>默认密码有 admin</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2020/wsl-terminal-beautify.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-      <meta itemprop="name" content="zhangsan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="啤酒小龙虾">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/wsl-terminal-beautify.html" class="post-title-link" itemprop="url">wsl-terminal-beautify</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-05 00:39:06" itemprop="dateCreated datePublished" datetime="2020-05-05T00:39:06+08:00">2020-05-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%98%E8%85%BE/" itemprop="url" rel="index"><span itemprop="name">折腾</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Linux 默认终端丑不拉几的，几乎没法看。高亮不足，提示不全，颜值太 low 影响视觉。终极优化方案<code>zsh + oh-my-zsh + powerlevel10k</code>大大提升用户体验感。</p>
-<p>如下图所示，图来自 powerlevel10k 官方<br><img src="https://cdn.nlark.com/yuque/0/2020/gif/218708/1588610393025-72426a09-be15-4780-80ed-9773c36a444c.gif#align=left&display=inline&height=339&margin=%5Bobject%20Object%5D&name=performance.gif&originHeight=402&originWidth=884&size=1237627&status=done&style=none&width=746" alt="performance.gif"></p>
-<h2 id="安装-zsh"><a href="#安装-zsh" class="headerlink" title="安装 zsh"></a>安装 zsh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># zsh</span></span><br><span class="line">sudo apt-get install zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改默认shell 为zsh 注意不要用sudo</span></span><br><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装-oh-my-zsh-amp-主题"><a href="#安装-oh-my-zsh-amp-主题" class="headerlink" title="安装  oh-my-zsh &amp; 主题"></a>安装  oh-my-zsh &amp; 主题</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 官方安装脚本</span></span><br><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载主题 powerlevel10k主题：https://github.com/romkatv/powerlevel10k</span></span><br><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/romkatv/powerlevel10k.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/themes/powerlevel10k</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置-oh-my-zsh"><a href="#配置-oh-my-zsh" class="headerlink" title="配置 oh-my-zsh"></a>配置 oh-my-zsh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="comment">## 修改主题配置为</span></span><br><span class="line">ZSH_THEME=<span class="string">&quot;powerlevel10k/powerlevel10k&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 修改插件配置为</span></span><br><span class="line">plugins=(git git-open zsh-autosuggestions zsh-syntax-highlighting)</span><br><span class="line"></span><br><span class="line"><span class="comment">## git-open 配置 alias 可以直接在终端输入go 就打开远程仓库地址</span></span><br><span class="line"><span class="built_in">alias</span> go=<span class="string">&quot;git-open&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 修改完毕，保存退出后执行</span></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置-powerlevel10k"><a href="#配置-powerlevel10k" class="headerlink" title="配置  powerlevel10k"></a>配置  powerlevel10k</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p10k configure</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.nlark.com/yuque/0/2020/gif/218708/1588677876103-c2ddecc1-191b-448a-9c43-b8e40c148b2d.gif#align=left&display=inline&height=762&margin=%5Bobject%20Object%5D&name=configuration-wizard.gif&originHeight=762&originWidth=884&size=183350&status=done&style=none&width=884" alt="configuration-wizard.gif"></p>
-<h3 id="有可能需要安装字体"><a href="#有可能需要安装字体" class="headerlink" title="有可能需要安装字体"></a>有可能需要安装字体</h3><p><a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k#fonts">https://github.com/romkatv/powerlevel10k#fonts</a></p>
-<h2 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h2><table>
-<thead>
-<tr>
-<th>插件</th>
-<th>作用</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>zsh-syntax-highlighting</td>
-<td>代码高亮</td>
-<td><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting">https://github.com/zsh-users/zsh-syntax-highlighting</a></td>
-</tr>
-<tr>
-<td>zsh-autosuggestions</td>
-<td>自动补全</td>
-<td><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions">https://github.com/zsh-users/zsh-autosuggestions</a></td>
-</tr>
-<tr>
-<td>git-open</td>
-<td>open 仓库</td>
-<td><a target="_blank" rel="noopener" href="https://github.com/paulirish/git-open">https://github.com/paulirish/git-open</a></td>
-</tr>
-</tbody></table>
+<h4 id="更换软件源"><a href="#更换软件源" class="headerlink" title="更换软件源"></a>更换软件源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先备份</span></span><br><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 在替换</span></span><br><span class="line">sudo sed -i <span class="string">"s/security.ubuntu/mirrors.aliyun/g"</span> /etc/apt/sources.list</span><br><span class="line">sudo sed -i <span class="string">"s/archive.ubuntu/mirrors.aliyun/g"</span> /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后更新</span></span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -607,6 +443,173 @@
 
 <p>_#### 更换软件源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先备份</span></span><br><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 在替换</span></span><br><span class="line">sudo sed -i <span class="string">&quot;s/security.ubuntu/mirrors.aliyun/g&quot;</span> /etc/apt/sources.list</span><br><span class="line">sudo sed -i <span class="string">&quot;s/archive.ubuntu/mirrors.aliyun/g&quot;</span> /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后更新</span></span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2018/ssl-x509-to-der.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="zhangsan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啤酒小龙虾">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/ssl-x509-to-der.html" class="post-title-link" itemprop="url">HTTPS SSL证书格式转换</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-27 01:44:39" itemprop="dateCreated datePublished" datetime="2018-01-27T01:44:39+08:00">2018-01-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-30 21:44:49" itemprop="dateModified" datetime="2021-05-30T21:44:49+08:00">2021-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%98%E8%85%BE/" itemprop="url" rel="index"><span itemprop="name">折腾</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="转换证书格式"><a href="#转换证书格式" class="headerlink" title="转换证书格式"></a>转换证书格式</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看证书</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> cert.crt -text -noout</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看DER encoded证书</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> uhttpd.crt -inform der -text -noout</span><br><span class="line"></span><br><span class="line"><span class="comment">#PEM to DER</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> cert.crt -outform der -out uhttpd.crt</span><br><span class="line">openssl rsa -<span class="keyword">in</span> cert.key -outform der -out uhttpd.key</span><br><span class="line"></span><br><span class="line"><span class="comment">#DER to PEM</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> uhttpd.crt -inform der -outform pem -out cert.crt</span><br><span class="line">openssl rsa -<span class="keyword">in</span> uhttpd.key -inform der -outform pem -out cert.key</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2018/lede-k3-compile-syncdial.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="zhangsan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啤酒小龙虾">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/lede-k3-compile-syncdial.html" class="post-title-link" itemprop="url">WSL Ubuntu 编译K3 syncdial 单线多拨</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-20 01:37:15" itemprop="dateCreated datePublished" datetime="2018-01-20T01:37:15+08:00">2018-01-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-30 21:44:49" itemprop="dateModified" datetime="2021-05-30T21:44:49+08:00">2021-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%98%E8%85%BE/" itemprop="url" rel="index"><span itemprop="name">折腾</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>K3刷了LEDE想单线多拨，发现软件源内没有syncdial。手动设置感觉麻烦(没设置过啊，一键多好)<br><img src="/images/lede-k3-compile-syncdial/1516378730321.png" alt="脸上笑嘻嘻,心里MMP"></p>
+<p>编译需要在Linux环境下，虚拟机不想折腾了。。懒得装的，所以用Ubuntu for Win10来试试（在微软商店下载），然后 控制面板 &gt; 程序 &gt; 启动或关闭Windows功能<br>勾上<code>适用于Linux的Windows子系统</code></p>
+<h2 id="下载LEDE-K3-SDK"><a href="#下载LEDE-K3-SDK" class="headerlink" title="下载LEDE K3 SDK"></a>下载LEDE K3 SDK</h2><blockquote>
+<p>可以在windows下载, 也可以在ubuntu wget</p>
+</blockquote>
+<p>中国科大提供了openwrt镜像和代理连接<a href="openwrt.proxy.ustclug.org">openwrt.proxy.ustclug.org</a><br>SDK地址:<a href="http://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz" target="_blank" rel="noopener">lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到D盘目录并建立文件夹lede</span></span><br><span class="line"><span class="built_in">cd</span> /mnt/d/ &amp;&amp; mkdir lede</span><br><span class="line"><span class="comment">#下载SDK</span></span><br><span class="line">wget http://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz</span><br><span class="line"><span class="comment"># 解压SDK 到lede-sdk目录</span></span><br><span class="line">tar xvJf lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz -C lede-sdk</span><br><span class="line"><span class="comment"># 切换到sdk目录</span></span><br><span class="line"><span class="built_in">cd</span> lede-sdk</span><br><span class="line"><span class="comment"># 安装依赖软件</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev</span><br></pre></td></tr></table></figure>
+
+<p>将源码下载到package目录下面</p>
+<p>链接: <a href="https://pan.baidu.com/s/1pMPhJ5L" target="_blank" rel="noopener">https://pan.baidu.com/s/1pMPhJ5L</a> 密码: fu6r</p>
+<h2 id="编译luci-app-syncdial"><a href="#编译luci-app-syncdial" class="headerlink" title="编译luci-app-syncdial"></a>编译luci-app-syncdial</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br><span class="line"><span class="comment"># 选择 Luci &gt; Application &gt; luci-app-syncdial</span></span><br><span class="line"><span class="comment"># 保存</span></span><br><span class="line">make package/luci-app-syncdial/compile V=99</span><br></pre></td></tr></table></figure>
+
+<p>编译完成后文件在<code>bin</code>目录下面</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>通过winscp上传路由器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg install luci-app-syncdial_2.0-22_all.ipk</span><br></pre></td></tr></table></figure>
+
+<p>然后进入路由器web管理页面就完事大吉<br><img src="/images/lede-k3-compile-syncdial/4265434.PNG" alt="图片"></p>
+<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p>我的宽带是20MB的, 电脑连接wifi所以没有达到下载三拨的慢速,上传已经是慢速了<br><img src="/images/lede-k3-compile-syncdial/6982504044.png" alt="图片"></p>
+<blockquote>
+<p>MARK 软件包来自<a href="https://github.com/coolsnowwolf/lede/" target="_blank" rel="noopener">https://github.com/coolsnowwolf/lede</a></p>
+</blockquote>
 
       
     </div>
@@ -699,7 +702,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
