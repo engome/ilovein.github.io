@@ -147,80 +147,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2021/WSL-Ubuntu-18.04%20%E9%98%BF%E9%87%8C%E4%BA%91%E6%BA%90.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-      <meta itemprop="name" content="zhangsan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="啤酒小龙虾">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/WSL-Ubuntu-18.04%20%E9%98%BF%E9%87%8C%E4%BA%91%E6%BA%90.html" class="post-title-link" itemprop="url">WSL-Ubuntu-18.04 阿里云源</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-31 00:48:25" itemprop="dateCreated datePublished" datetime="2021-05-31T00:48:25+08:00">2021-05-31</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<p>title: WSL-Ubuntu-18.04 阿里云源<br>date: 2020-05-04 22:05:39<br>categories: </p>
-<ul>
-<li>折腾<br>tags:</li>
-<li>WSL</li>
-</ul>
-<hr>
-<p>windows subsystem linux ubuntu 安装的版本默认源仓库在国外,此文为替换国内源一个记录,同时适用于所有 Ubuntu-18.04 系统</p>
-<p>阿里云源地址:<a href="_%5Bhttps://developer.aliyun.com/mirror/%5D(https://developer.aliyun.com/mirror/)_">https://developer.aliyun.com/mirror/</a></p>
-<p>_#### 查看现有 ubuntu 软件源信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<p><strong>结果：</strong></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># See [http://help.ubuntu.com/community/UpgradeNotes](http://help.ubuntu.com/community/UpgradeNotes) for how to upgrade to</span></span><br><span class="line"><span class="comment"># newer versions of the distribution.</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic main restricted</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic main restricted</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Major bug fix updates produced after the final release of the</span></span><br><span class="line"><span class="comment">## distribution.</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates main restricted</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates main restricted</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</span></span><br><span class="line"><span class="comment">## team. Also, please note that software in universe WILL NOT receive any</span></span><br><span class="line"><span class="comment">## review or updates from the Ubuntu security team.</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic universe</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic universe</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates universe</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates universe</span></span><br><span class="line">....</span><br></pre></td></tr></table></figure>
-
-<p>_#### 更换软件源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先备份</span></span><br><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 在替换</span></span><br><span class="line">sudo sed -i <span class="string">&quot;s/security.ubuntu/mirrors.aliyun/g&quot;</span> /etc/apt/sources.list</span><br><span class="line">sudo sed -i <span class="string">&quot;s/archive.ubuntu/mirrors.aliyun/g&quot;</span> /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后更新</span></span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://www.engo.me/2021/HTTPS%20SSL%E8%AF%81%E4%B9%A6%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -605,6 +531,82 @@
 <td><a target="_blank" rel="noopener" href="https://github.com/paulirish/git-open">https://github.com/paulirish/git-open</a></td>
 </tr>
 </tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2020/WSL-Ubuntu-18.04%20%E9%98%BF%E9%87%8C%E4%BA%91%E6%BA%90.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="zhangsan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啤酒小龙虾">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/WSL-Ubuntu-18.04%20%E9%98%BF%E9%87%8C%E4%BA%91%E6%BA%90.html" class="post-title-link" itemprop="url">WSL-Ubuntu-18.04 阿里云源</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-04 22:05:39" itemprop="dateCreated datePublished" datetime="2020-05-04T22:05:39+08:00">2020-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%98%E8%85%BE/" itemprop="url" rel="index"><span itemprop="name">折腾</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>windows subsystem linux ubuntu 安装的版本默认源仓库在国外,此文为替换国内源一个记录,同时适用于所有 Ubuntu-18.04 系统</p>
+<p>阿里云源地址:<a href="_%5Bhttps://developer.aliyun.com/mirror/%5D(https://developer.aliyun.com/mirror/)_">https://developer.aliyun.com/mirror/</a></p>
+<p>_#### 查看现有 ubuntu 软件源信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<p><strong>结果：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># See [http://help.ubuntu.com/community/UpgradeNotes](http://help.ubuntu.com/community/UpgradeNotes) for how to upgrade to</span></span><br><span class="line"><span class="comment"># newer versions of the distribution.</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic main restricted</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic main restricted</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Major bug fix updates produced after the final release of the</span></span><br><span class="line"><span class="comment">## distribution.</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates main restricted</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates main restricted</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</span></span><br><span class="line"><span class="comment">## team. Also, please note that software in universe WILL NOT receive any</span></span><br><span class="line"><span class="comment">## review or updates from the Ubuntu security team.</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic universe</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic universe</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates universe</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates universe</span></span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<p>_#### 更换软件源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先备份</span></span><br><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 在替换</span></span><br><span class="line">sudo sed -i <span class="string">&quot;s/security.ubuntu/mirrors.aliyun/g&quot;</span> /etc/apt/sources.list</span><br><span class="line">sudo sed -i <span class="string">&quot;s/archive.ubuntu/mirrors.aliyun/g&quot;</span> /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后更新</span></span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
 
       
     </div>
