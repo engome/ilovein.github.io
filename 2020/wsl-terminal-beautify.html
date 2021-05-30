@@ -21,25 +21,25 @@
     var CONFIG = {"hostname":"www.engo.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="K3刷了LEDE想单线多拨，发现软件源内没有syncdial。手动设置感觉麻烦(没设置过啊，一键多好) 编译需要在Linux环境下，虚拟机不想折腾了。。懒得装的，所以用Ubuntu for Win10来试试（在微软商店下载），然后 控制面板 &gt; 程序 &gt; 启动或关闭Windows功能勾上适用于Linux的Windows子系统 下载LEDE K3 SDK 可以在windows下载, 也可">
+  <meta name="description" content="Linux 默认终端丑不拉几的，几乎没法看。高亮不足，提示不全，颜值太 low 影响视觉。终极优化方案zsh + oh-my-zsh + powerlevel10k大大提升用户体验感。 如下图所示，图来自 powerlevel10k 官方 安装 zsh12345# zshsudo apt-get install zsh# 修改默认shell 为zsh 注意不要用sudochsh -s &#x2F;bin&#x2F;z">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WSL Ubuntu 编译K3 syncdial 单线多拨">
-<meta property="og:url" content="http://www.engo.me/2018/lede-k3-compile-syncdial.html">
+<meta property="og:title" content="wsl-terminal-beautify">
+<meta property="og:url" content="http://www.engo.me/2020/wsl-terminal-beautify.html">
 <meta property="og:site_name" content="啤酒小龙虾">
-<meta property="og:description" content="K3刷了LEDE想单线多拨，发现软件源内没有syncdial。手动设置感觉麻烦(没设置过啊，一键多好) 编译需要在Linux环境下，虚拟机不想折腾了。。懒得装的，所以用Ubuntu for Win10来试试（在微软商店下载），然后 控制面板 &gt; 程序 &gt; 启动或关闭Windows功能勾上适用于Linux的Windows子系统 下载LEDE K3 SDK 可以在windows下载, 也可">
+<meta property="og:description" content="Linux 默认终端丑不拉几的，几乎没法看。高亮不足，提示不全，颜值太 low 影响视觉。终极优化方案zsh + oh-my-zsh + powerlevel10k大大提升用户体验感。 如下图所示，图来自 powerlevel10k 官方 安装 zsh12345# zshsudo apt-get install zsh# 修改默认shell 为zsh 注意不要用sudochsh -s &#x2F;bin&#x2F;z">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.engo.me/images/lede-k3-compile-syncdial/1516378730321.png">
-<meta property="og:image" content="http://www.engo.me/images/lede-k3-compile-syncdial/4265434.PNG">
-<meta property="og:image" content="http://www.engo.me/images/lede-k3-compile-syncdial/6982504044.png">
-<meta property="article:published_time" content="2018-01-19T17:37:15.000Z">
-<meta property="article:modified_time" content="2021-05-30T13:44:49.367Z">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/gif/218708/1588610393025-72426a09-be15-4780-80ed-9773c36a444c.gif#align=left&display=inline&height=339&margin=%5Bobject%20Object%5D&name=performance.gif&originHeight=402&originWidth=884&size=1237627&status=done&style=none&width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/gif/218708/1588677876103-c2ddecc1-191b-448a-9c43-b8e40c148b2d.gif#align=left&display=inline&height=762&margin=%5Bobject%20Object%5D&name=configuration-wizard.gif&originHeight=762&originWidth=884&size=183350&status=done&style=none&width=884">
+<meta property="article:published_time" content="2020-05-04T16:39:06.000Z">
+<meta property="article:modified_time" content="2020-05-04T16:39:06.000Z">
 <meta property="article:author" content="zhangsan">
-<meta property="article:tag" content="SSL">
-<meta property="article:tag" content="HTTPS">
+<meta property="article:tag" content="WSL">
+<meta property="article:tag" content="ZSH">
+<meta property="article:tag" content="终端">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.engo.me/images/lede-k3-compile-syncdial/1516378730321.png">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2020/gif/218708/1588610393025-72426a09-be15-4780-80ed-9773c36a444c.gif#align=left&display=inline&height=339&margin=%5Bobject%20Object%5D&name=performance.gif&originHeight=402&originWidth=884&size=1237627&status=done&style=none&width=746">
 
-<link rel="canonical" href="http://www.engo.me/2018/lede-k3-compile-syncdial.html">
+<link rel="canonical" href="http://www.engo.me/2020/wsl-terminal-beautify.html">
 
 
 <script id="page-configurations">
@@ -52,7 +52,7 @@
   };
 </script>
 
-  <title>WSL Ubuntu 编译K3 syncdial 单线多拨 | 啤酒小龙虾</title>
+  <title>wsl-terminal-beautify | 啤酒小龙虾</title>
   
 
 
@@ -158,7 +158,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2018/lede-k3-compile-syncdial.html">
+    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2020/wsl-terminal-beautify.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/touxiang.jpg">
@@ -171,7 +171,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          WSL Ubuntu 编译K3 syncdial 单线多拨
+          wsl-terminal-beautify
         </h1>
 
         <div class="post-meta">
@@ -181,15 +181,8 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-01-20 01:37:15" itemprop="dateCreated datePublished" datetime="2018-01-20T01:37:15+08:00">2018-01-20</time>
+              <time title="创建时间：2020-05-05 00:39:06" itemprop="dateCreated datePublished" datetime="2020-05-05T00:39:06+08:00">2020-05-05</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-30 21:44:49" itemprop="dateModified" datetime="2021-05-30T21:44:49+08:00">2021-05-30</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -211,27 +204,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>K3刷了LEDE想单线多拨，发现软件源内没有syncdial。手动设置感觉麻烦(没设置过啊，一键多好)<br><img src="/images/lede-k3-compile-syncdial/1516378730321.png" alt="脸上笑嘻嘻,心里MMP"></p>
-<p>编译需要在Linux环境下，虚拟机不想折腾了。。懒得装的，所以用Ubuntu for Win10来试试（在微软商店下载），然后 控制面板 &gt; 程序 &gt; 启动或关闭Windows功能<br>勾上<code>适用于Linux的Windows子系统</code></p>
-<h2 id="下载LEDE-K3-SDK"><a href="#下载LEDE-K3-SDK" class="headerlink" title="下载LEDE K3 SDK"></a>下载LEDE K3 SDK</h2><blockquote>
-<p>可以在windows下载, 也可以在ubuntu wget</p>
-</blockquote>
-<p>中国科大提供了openwrt镜像和代理连接<a href="openwrt.proxy.ustclug.org">openwrt.proxy.ustclug.org</a><br>SDK地址:<a href="http://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz" target="_blank" rel="noopener">lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到D盘目录并建立文件夹lede</span></span><br><span class="line"><span class="built_in">cd</span> /mnt/d/ &amp;&amp; mkdir lede</span><br><span class="line"><span class="comment">#下载SDK</span></span><br><span class="line">wget http://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz</span><br><span class="line"><span class="comment"># 解压SDK 到lede-sdk目录</span></span><br><span class="line">tar xvJf lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz -C lede-sdk</span><br><span class="line"><span class="comment"># 切换到sdk目录</span></span><br><span class="line"><span class="built_in">cd</span> lede-sdk</span><br><span class="line"><span class="comment"># 安装依赖软件</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev</span><br></pre></td></tr></table></figure>
+        <p>Linux 默认终端丑不拉几的，几乎没法看。高亮不足，提示不全，颜值太 low 影响视觉。终极优化方案<code>zsh + oh-my-zsh + powerlevel10k</code>大大提升用户体验感。</p>
+<p>如下图所示，图来自 powerlevel10k 官方<br><img src="https://cdn.nlark.com/yuque/0/2020/gif/218708/1588610393025-72426a09-be15-4780-80ed-9773c36a444c.gif#align=left&display=inline&height=339&margin=%5Bobject%20Object%5D&name=performance.gif&originHeight=402&originWidth=884&size=1237627&status=done&style=none&width=746" alt="performance.gif"></p>
+<h2 id="安装-zsh"><a href="#安装-zsh" class="headerlink" title="安装 zsh"></a>安装 zsh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># zsh</span></span><br><span class="line">sudo apt-get install zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改默认shell 为zsh 注意不要用sudo</span></span><br><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
 
-<p>将源码下载到package目录下面</p>
-<p>链接: <a href="https://pan.baidu.com/s/1pMPhJ5L" target="_blank" rel="noopener">https://pan.baidu.com/s/1pMPhJ5L</a> 密码: fu6r</p>
-<h2 id="编译luci-app-syncdial"><a href="#编译luci-app-syncdial" class="headerlink" title="编译luci-app-syncdial"></a>编译luci-app-syncdial</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br><span class="line"><span class="comment"># 选择 Luci &gt; Application &gt; luci-app-syncdial</span></span><br><span class="line"><span class="comment"># 保存</span></span><br><span class="line">make package/luci-app-syncdial/compile V=99</span><br></pre></td></tr></table></figure>
+<h2 id="安装-oh-my-zsh-amp-主题"><a href="#安装-oh-my-zsh-amp-主题" class="headerlink" title="安装  oh-my-zsh &amp; 主题"></a>安装  oh-my-zsh &amp; 主题</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 官方安装脚本</span></span><br><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载主题 powerlevel10k主题：https://github.com/romkatv/powerlevel10k</span></span><br><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/romkatv/powerlevel10k.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/themes/powerlevel10k</span><br></pre></td></tr></table></figure>
 
-<p>编译完成后文件在<code>bin</code>目录下面</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>通过winscp上传路由器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg install luci-app-syncdial_2.0-22_all.ipk</span><br></pre></td></tr></table></figure>
+<h3 id="配置-oh-my-zsh"><a href="#配置-oh-my-zsh" class="headerlink" title="配置 oh-my-zsh"></a>配置 oh-my-zsh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="comment">## 修改主题配置为</span></span><br><span class="line">ZSH_THEME=<span class="string">&quot;powerlevel10k/powerlevel10k&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 修改插件配置为</span></span><br><span class="line">plugins=(git git-open zsh-autosuggestions zsh-syntax-highlighting)</span><br><span class="line"></span><br><span class="line"><span class="comment">## git-open 配置 alias 可以直接在终端输入go 就打开远程仓库地址</span></span><br><span class="line"><span class="built_in">alias</span> go=<span class="string">&quot;git-open&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 修改完毕，保存退出后执行</span></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 
-<p>然后进入路由器web管理页面就完事大吉<br><img src="/images/lede-k3-compile-syncdial/4265434.PNG" alt="图片"></p>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p>我的宽带是20MB的, 电脑连接wifi所以没有达到下载三拨的慢速,上传已经是慢速了<br><img src="/images/lede-k3-compile-syncdial/6982504044.png" alt="图片"></p>
-<blockquote>
-<p>MARK 软件包来自<a href="https://github.com/coolsnowwolf/lede/" target="_blank" rel="noopener">https://github.com/coolsnowwolf/lede</a></p>
-</blockquote>
+<h3 id="配置-powerlevel10k"><a href="#配置-powerlevel10k" class="headerlink" title="配置  powerlevel10k"></a>配置  powerlevel10k</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p10k configure</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/gif/218708/1588677876103-c2ddecc1-191b-448a-9c43-b8e40c148b2d.gif#align=left&display=inline&height=762&margin=%5Bobject%20Object%5D&name=configuration-wizard.gif&originHeight=762&originWidth=884&size=183350&status=done&style=none&width=884" alt="configuration-wizard.gif"></p>
+<h3 id="有可能需要安装字体"><a href="#有可能需要安装字体" class="headerlink" title="有可能需要安装字体"></a>有可能需要安装字体</h3><p><a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k#fonts">https://github.com/romkatv/powerlevel10k#fonts</a></p>
+<h2 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h2><table>
+<thead>
+<tr>
+<th>插件</th>
+<th>作用</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>zsh-syntax-highlighting</td>
+<td>代码高亮</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting">https://github.com/zsh-users/zsh-syntax-highlighting</a></td>
+</tr>
+<tr>
+<td>zsh-autosuggestions</td>
+<td>自动补全</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions">https://github.com/zsh-users/zsh-autosuggestions</a></td>
+</tr>
+<tr>
+<td>git-open</td>
+<td>open 仓库</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/paulirish/git-open">https://github.com/paulirish/git-open</a></td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -241,8 +249,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/SSL/" rel="tag"># SSL</a>
-              <a href="/tags/HTTPS/" rel="tag"># HTTPS</a>
+              <a href="/tags/WSL/" rel="tag"># WSL</a>
+              <a href="/tags/ZSH/" rel="tag"># ZSH</a>
+              <a href="/tags/%E7%BB%88%E7%AB%AF/" rel="tag"># 终端</a>
           </div>
 
         
@@ -252,8 +261,8 @@
     <div class="post-nav">
       <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2018/ssl-x509-to-der.html" rel="next" title="HTTPS SSL证书格式转换">
-      HTTPS SSL证书格式转换 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/DQ77KB-AMT-reset-password.html" rel="next" title="DQ77KB-AMT-reset-password">
+      DQ77KB-AMT-reset-password <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -313,7 +322,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDLEDE-K3-SDK"><span class="nav-number">1.</span> <span class="nav-text">下载LEDE K3 SDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91luci-app-syncdial"><span class="nav-number">2.</span> <span class="nav-text">编译luci-app-syncdial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">测试结果</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-zsh"><span class="nav-number">1.</span> <span class="nav-text">安装 zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-oh-my-zsh-amp-%E4%B8%BB%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">安装  oh-my-zsh &amp; 主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-oh-my-zsh"><span class="nav-number">2.1.</span> <span class="nav-text">配置 oh-my-zsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-powerlevel10k"><span class="nav-number">2.2.</span> <span class="nav-text">配置  powerlevel10k</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%8F%AF%E8%83%BD%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93"><span class="nav-number">2.3.</span> <span class="nav-text">有可能需要安装字体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">常用插件</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -329,7 +338,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
