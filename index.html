@@ -147,6 +147,238 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2021/WSL-Ubuntu-18.04%20%E9%98%BF%E9%87%8C%E4%BA%91%E6%BA%90.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="zhangsan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啤酒小龙虾">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/WSL-Ubuntu-18.04%20%E9%98%BF%E9%87%8C%E4%BA%91%E6%BA%90.html" class="post-title-link" itemprop="url">WSL-Ubuntu-18.04 阿里云源</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-31 00:48:25" itemprop="dateCreated datePublished" datetime="2021-05-31T00:48:25+08:00">2021-05-31</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p>title: WSL-Ubuntu-18.04 阿里云源<br>date: 2020-05-04 22:05:39<br>categories: </p>
+<ul>
+<li>折腾<br>tags:</li>
+<li>WSL</li>
+</ul>
+<hr>
+<p>windows subsystem linux ubuntu 安装的版本默认源仓库在国外,此文为替换国内源一个记录,同时适用于所有 Ubuntu-18.04 系统</p>
+<p>阿里云源地址:<a href="_%5Bhttps://developer.aliyun.com/mirror/%5D(https://developer.aliyun.com/mirror/)_">https://developer.aliyun.com/mirror/</a></p>
+<p>_#### 查看现有 ubuntu 软件源信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<p><strong>结果：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># See [http://help.ubuntu.com/community/UpgradeNotes](http://help.ubuntu.com/community/UpgradeNotes) for how to upgrade to</span></span><br><span class="line"><span class="comment"># newer versions of the distribution.</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic main restricted</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic main restricted</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Major bug fix updates produced after the final release of the</span></span><br><span class="line"><span class="comment">## distribution.</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates main restricted</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates main restricted</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</span></span><br><span class="line"><span class="comment">## team. Also, please note that software in universe WILL NOT receive any</span></span><br><span class="line"><span class="comment">## review or updates from the Ubuntu security team.</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic universe</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic universe</span></span><br><span class="line">deb [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates universe</span><br><span class="line"><span class="comment"># deb-src [http://archive.ubuntu.com/ubuntu/](http://archive.ubuntu.com/ubuntu/) bionic-updates universe</span></span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<p>_#### 更换软件源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先备份</span></span><br><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 在替换</span></span><br><span class="line">sudo sed -i <span class="string">&quot;s/security.ubuntu/mirrors.aliyun/g&quot;</span> /etc/apt/sources.list</span><br><span class="line">sudo sed -i <span class="string">&quot;s/archive.ubuntu/mirrors.aliyun/g&quot;</span> /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后更新</span></span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2021/HTTPS%20SSL%E8%AF%81%E4%B9%A6%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="zhangsan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啤酒小龙虾">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/HTTPS%20SSL%E8%AF%81%E4%B9%A6%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2.html" class="post-title-link" itemprop="url">HTTPS SSL证书格式转换</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-31 00:48:04" itemprop="dateCreated datePublished" datetime="2021-05-31T00:48:04+08:00">2021-05-31</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p>title: HTTPS SSL证书格式转换<br>date: 2018-01-27 01:44:39<br>categories: </p>
+<ul>
+<li>折腾<br>tags:</li>
+<li>SSL</li>
+<li>HTTPS</li>
+</ul>
+<hr>
+<p>_# 转换证书格式<br>_```bash #查看证书<br>openssl x509 -in cert.crt -text -noout</p>
+<p>#查看 DER encoded 证书<br>openssl x509 -in uhttpd.crt -inform der -text -noout</p>
+<p>#PEM to DER<br>openssl x509 -in cert.crt -outform der -out uhttpd.crt<br>openssl rsa -in cert.key -outform der -out uhttpd.key</p>
+<p>#DER to PEM<br>openssl x509 -in uhttpd.crt -inform der -outform pem -out cert.crt<br>openssl rsa -in uhttpd.key -inform der -outform pem -out cert.key</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2021/WSL%20Ubuntu%20%E7%BC%96%E8%AF%91K3%20syncdial%20%E5%8D%95%E7%BA%BF%E5%A4%9A%E6%8B%A8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="zhangsan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啤酒小龙虾">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/WSL%20Ubuntu%20%E7%BC%96%E8%AF%91K3%20syncdial%20%E5%8D%95%E7%BA%BF%E5%A4%9A%E6%8B%A8.html" class="post-title-link" itemprop="url">WSL Ubuntu 编译K3 syncdial 单线多拨</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-31 00:46:34" itemprop="dateCreated datePublished" datetime="2021-05-31T00:46:34+08:00">2021-05-31</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p>title: WSL Ubuntu 编译K3 syncdial 单线多拨<br>date: 2018-01-20 01:37:15<br>categories: </p>
+<ul>
+<li>折腾<br>tags:</li>
+<li>SSL</li>
+<li>HTTPS</li>
+</ul>
+<hr>
+<p>K3 刷了 LEDE 想单线多拨，发现软件源内没有 syncdial。手动设置感觉麻烦(没设置过啊，一键多好)<br><img src="/images/lede-k3-compile-syncdial/1516378730321.png" alt="脸上笑嘻嘻,心里MMP"></p>
+<p>编译需要在 Linux 环境下，虚拟机不想折腾了。。懒得装的，所以用 Ubuntu for Win10 来试试（在微软商店下载），然后 控制面板 &gt; 程序 &gt; 启动或关闭 Windows 功能<br>勾上<code>适用于Linux的Windows子系统</code></p>
+<p>_## 下载 LEDE K3 SDK</p>
+<blockquote>
+<p>可以在 windows 下载, 也可以在 ubuntu wget</p>
+</blockquote>
+<p>中国科大提供了 openwrt 镜像和代理连接<a href="_openwrt.proxy.ustclug.org_">openwrt.proxy.ustclug.org</a><br>SDK 地址:<a href="_%5Bhttp://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz%5D(http://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz)_">lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到D盘目录并建立文件夹lede</span></span><br><span class="line"><span class="built_in">cd</span> /mnt/d/ &amp;&amp; mkdir lede</span><br><span class="line"><span class="comment">#下载SDK</span></span><br><span class="line">wget [http://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz](http://openwrt.proxy.ustclug.org/releases/17.01.4/targets/bcm53xx/generic/lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz)</span><br><span class="line"><span class="comment"># 解压SDK 到lede-sdk目录</span></span><br><span class="line">tar xvJf lede-sdk-17.01.4-bcm53xx_gcc-5.4.0_musl-1.1.16_eabi.Linux-x86_64.tar.xz -C lede-sdk</span><br><span class="line"><span class="comment"># 切换到sdk目录</span></span><br><span class="line"><span class="built_in">cd</span> lede-sdk</span><br><span class="line"><span class="comment"># 安装依赖软件</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev</span><br></pre></td></tr></table></figure>
+
+<p>将源码下载到 package 目录下面</p>
+<p>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1pMPhJ5L">https://pan.baidu.com/s/1pMPhJ5L</a> 密码: fu6r</p>
+<p>_## 编译 luci-app-syncdial</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br><span class="line"><span class="comment"># 选择 Luci &gt; Application &gt; luci-app-syncdial</span></span><br><span class="line"><span class="comment"># 保存</span></span><br><span class="line">make package/luci-app-syncdial/compile V=99</span><br></pre></td></tr></table></figure>
+
+<p>编译完成后文件在<code>bin</code>目录下面</p>
+<p>_## 安装<br>通过 winscp 上传路由器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg install luci-app-syncdial_2.0-22_all.ipk</span><br></pre></td></tr></table></figure>
+
+<p>然后进入路由器 web 管理页面就完事大吉<br><img src="/images/lede-k3-compile-syncdial/4265434.PNG" alt="图片"></p>
+<p>_## 测试结果<br>我的宽带是 20MB 的, 电脑连接 wifi 所以没有达到下载三拨的慢速,上传已经是慢速了<br><img src="/images/lede-k3-compile-syncdial/6982504044.png" alt="图片"></p>
+<blockquote>
+<p>MARK 软件包来自<a target="_blank" rel="noopener" href="https://github.com/coolsnowwolf/lede/">https://github.com/coolsnowwolf/lede</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://www.engo.me/2021/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -456,7 +688,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
