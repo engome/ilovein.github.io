@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<meta name="referrer" content="no-referrer" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.engo.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最近在科学工具不太稳定，急需一台 backup 来自动切换以备不时之需。之前听说过 Oracle Cloud VPS 可以永久免费使用，这次尝试白嫖下，没想到一下就成功了。故作次记录 前提条件：你必须要要有张信用卡，可以是 VSIA，MasterCard 都行，会进行扣款认证。你可能需要一把梯子，我的移动的网有时候会很访问很慢 注册 &amp; 绑卡https:&#x2F;&#x2F;signup.cloud.ora">
+<meta property="og:type" content="article">
+<meta property="og:title" content="薅美帝企业羊毛-白嫖Oracle cloud 永久免费VPS">
+<meta property="og:url" content="http://www.engo.me/2021/yuque/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
+<meta property="og:site_name" content="啤酒小龙虾">
+<meta property="og:description" content="最近在科学工具不太稳定，急需一台 backup 来自动切换以备不时之需。之前听说过 Oracle Cloud VPS 可以永久免费使用，这次尝试白嫖下，没想到一下就成功了。故作次记录 前提条件：你必须要要有张信用卡，可以是 VSIA，MasterCard 都行，会进行扣款认证。你可能需要一把梯子，我的移动的网有时候会很访问很慢 注册 &amp; 绑卡https:&#x2F;&#x2F;signup.cloud.ora">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/218708/1622387871475-6122b79a-8d6a-4a16-894e-9d1d2e0d077d.png#align=left&display=inline&height=435&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1112&originWidth=778&size=408354&status=done&style=none&width=304">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/218708/1622388458965-ac949e9f-267a-4928-83d9-78e2052c2c24.png#align=left&display=inline&height=216&margin=%5Bobject%20Object%5D&name=image.png&originHeight=432&originWidth=890&size=31729&status=done&style=none&width=445">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/218708/1622388578857-746c35a8-df05-468f-bd7e-bd40a09532c2.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1362&originWidth=2244&size=236416&status=done&style=none&width=1122">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/218708/1622389022684-2b58eba4-6711-4169-97f0-099cb64da80e.png#align=left&display=inline&height=605&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1210&originWidth=1632&size=167686&status=done&style=none&width=816">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/218708/1622389124138-cd8a908c-4e69-4ab8-b957-d0ae0907ca4e.png#align=left&display=inline&height=181&margin=%5Bobject%20Object%5D&name=image.png&originHeight=362&originWidth=900&size=16319&status=done&style=none&width=450">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/218708/1622389570039-a824bbc8-7158-447b-b7c0-77ce6ee84325.png#align=left&display=inline&height=262&margin=%5Bobject%20Object%5D&name=image.png&originHeight=524&originWidth=2258&size=120203&status=done&style=none&width=1129">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/218708/1622390472489-4936d7cc-2f50-45ce-8bbc-bd0056f47055.png#align=left&display=inline&height=293&margin=%5Bobject%20Object%5D&name=image.png&originHeight=586&originWidth=2190&size=110576&status=done&style=none&width=1095">
+<meta property="article:published_time" content="2021-05-30T14:46:26.000Z">
+<meta property="article:modified_time" content="2021-05-30T14:46:26.000Z">
+<meta property="article:author" content="zhangsan">
+<meta property="article:tag" content="vps">
+<meta property="article:tag" content="白嫖">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2021/png/218708/1622387871475-6122b79a-8d6a-4a16-894e-9d1d2e0d077d.png#align=left&display=inline&height=435&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1112&originWidth=778&size=408354&status=done&style=none&width=304">
+
+<link rel="canonical" href="http://www.engo.me/2021/yuque/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>薅美帝企业羊毛-白嫖Oracle cloud 永久免费VPS | 啤酒小龙虾</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">啤酒小龙虾</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Write something</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2021/yuque/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+      <meta itemprop="name" content="zhangsan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="啤酒小龙虾">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          薅美帝企业羊毛-白嫖Oracle cloud 永久免费VPS
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-30 22:46:26" itemprop="dateCreated datePublished" datetime="2021-05-30T22:46:26+08:00">2021-05-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%98%E8%85%BE/" itemprop="url" rel="index"><span itemprop="name">折腾</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近在科学工具不太稳定，急需一台 backup 来自动切换以备不时之需。之前听说过 Oracle Cloud VPS 可以永久免费使用，这次尝试白嫖下，没想到一下就成功了。故作次记录<br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622387871475-6122b79a-8d6a-4a16-894e-9d1d2e0d077d.png#align=left&display=inline&height=435&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1112&originWidth=778&size=408354&status=done&style=none&width=304" alt="image.png"></p>
+<h3 id="前提条件："><a href="#前提条件：" class="headerlink" title="前提条件："></a>前提条件：</h3><p>你必须要要有张信用卡，可以是 VSIA，MasterCard 都行，会进行扣款认证。<br>你可能需要一把梯子，我的移动的网有时候会很访问很慢</p>
+<h3 id="注册-amp-绑卡"><a href="#注册-amp-绑卡" class="headerlink" title="注册 &amp; 绑卡"></a>注册 &amp; 绑卡</h3><p><a target="_blank" rel="noopener" href="https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&language=zh_CN">https://signup.cloud.oracle.com/?sourceType=_ref_coc-asset-opcSignIn&amp;language=zh_CN</a><br>按正常信息即可，注册，绑卡时我都没得问题（平安车主卡）</p>
+<h4 id="创建-vm"><a href="#创建-vm" class="headerlink" title="创建 vm"></a>创建 vm</h4><p>进入主页：<a target="_blank" rel="noopener" href="https://cloud.oracle.com/?region=ap-seoul-1">https://cloud.oracle.com/?region=ap-seoul-1</a><br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622388458965-ac949e9f-267a-4928-83d9-78e2052c2c24.png#align=left&display=inline&height=216&margin=%5Bobject%20Object%5D&name=image.png&originHeight=432&originWidth=890&size=31729&status=done&style=none&width=445" alt="image.png"></p>
+<h4 id="选择镜像"><a href="#选择镜像" class="headerlink" title="选择镜像"></a>选择镜像</h4><p>选择你要有的镜像，Ubuntn Centos 这些都可以<br><em><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622388578857-746c35a8-df05-468f-bd7e-bd40a09532c2.png#align=left&display=inline&height=681&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1362&originWidth=2244&size=236416&status=done&style=none&width=1122" alt="image.png"></em><br>在配置 vm 的时候注意要有这个条件的 <strong>_符合始终免费条件 _</strong>_ ，_1 个核心 OCPU，1 GB 内存，0.48 Gbps 网络带宽(通常只有 50Mbps，每个 VM 是 1/8 的配置，CPU 和带宽都是 1/8)</p>
+<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>默认即可，如果 IP 时被 Q 的，国内无法访问。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622389022684-2b58eba4-6711-4169-97f0-099cb64da80e.png#align=left&display=inline&height=605&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1210&originWidth=1632&size=167686&status=done&style=none&width=816" alt="image.png"><br>可以通过这个网站检测 <a target="_blank" rel="noopener" href="https://www.vps234.com/ipchecker/">https://www.vps234.com/ipchecker</a> 国内 tcp 可以访问即可<br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622389124138-cd8a908c-4e69-4ab8-b957-d0ae0907ca4e.png#align=left&display=inline&height=181&margin=%5Bobject%20Object%5D&name=image.png&originHeight=362&originWidth=900&size=16319&status=done&style=none&width=450" alt="image.png"></p>
+<p>如果被 Q 可以重新分配 IP： 在 附加的 VNIC， 查看详细信息里面可修改<br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622389570039-a824bbc8-7158-447b-b7c0-77ce6ee84325.png#align=left&display=inline&height=262&margin=%5Bobject%20Object%5D&name=image.png&originHeight=524&originWidth=2258&size=120203&status=done&style=none&width=1129" alt="image.png"></p>
+<h4 id="登陆-vm"><a href="#登陆-vm" class="headerlink" title="登陆 vm"></a>登陆 vm</h4><p>在创建 vm 的时候需要保持 ssh 密钥或者自己上传已有的密钥，否则你无法远程登陆<br><img src="https://cdn.nlark.com/yuque/0/2021/png/218708/1622390472489-4936d7cc-2f50-45ce-8bbc-bd0056f47055.png#align=left&display=inline&height=293&margin=%5Bobject%20Object%5D&name=image.png&originHeight=586&originWidth=2190&size=110576&status=done&style=none&width=1095" alt="image.png"><br>oracle cloud vm 首次无法远程 root 账户登陆<br>如果 vm 是 Linux, CentOS, or Windows 你的用户名为 opc<br>如果 vm 是 Ubuntu 你的用户名是 ubuntu<br>使用密钥登陆：ubuntu@ip or opc@ip</p>
+<p>参考文档：<a target="_blank" rel="noopener" href="https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/accessinginstance.htm#Prerequi">https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/accessinginstance.htm#Prerequi</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vps/" rel="tag"># vps</a>
+              <a href="/tags/%E7%99%BD%E5%AB%96/" rel="tag"># 白嫖</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/yuque/DQ77KB-AMT-reset-password.html" rel="prev" title="DQ77KB-AMT-reset-password">
+      <i class="fa fa-chevron-left"></i> DQ77KB-AMT-reset-password
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/yuque/WSL%20Ubuntu%20%E7%BC%96%E8%AF%91K3%20syncdial%20%E5%8D%95%E7%BA%BF%E5%A4%9A%E6%8B%A8.html" rel="next" title="WSL Ubuntu 编译K3 syncdial 单线多拨">
+      WSL Ubuntu 编译K3 syncdial 单线多拨 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">前提条件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C-amp-%E7%BB%91%E5%8D%A1"><span class="nav-number">2.</span> <span class="nav-text">注册 &amp; 绑卡</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-vm"><span class="nav-number">2.1.</span> <span class="nav-text">创建 vm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F"><span class="nav-number">2.2.</span> <span class="nav-text">选择镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">网络配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%99%BB%E9%99%86-vm"><span class="nav-number">2.4.</span> <span class="nav-text">登陆 vm</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zhangsan"
+      src="/images/touxiang.jpg">
+  <p class="site-author-name" itemprop="name">zhangsan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/engome" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;engome" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zbb1906@gmail.com" title="E-Mail → mailto:zbb1906@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.engo.me/" title="http:&#x2F;&#x2F;www.engo.me">Title</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangsan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
