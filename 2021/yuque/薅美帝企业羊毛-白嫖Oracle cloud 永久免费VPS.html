@@ -18,13 +18,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.engo.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"www.ilovein.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="最近在科学工具不太稳定，急需一台 backup 来自动切换以备不时之需。之前听说过 Oracle Cloud VPS 可以永久免费使用，这次尝试白嫖下，没想到一下就成功了。故作次记录 前提条件：你必须要要有张信用卡，可以是 VSIA，MasterCard 都行，会进行扣款认证。你可能需要一把梯子，我的移动的网有时候会很访问很慢 注册 &amp; 绑卡https:&#x2F;&#x2F;signup.cloud.ora">
 <meta property="og:type" content="article">
 <meta property="og:title" content="薅美帝企业羊毛-白嫖Oracle cloud 永久免费VPS">
-<meta property="og:url" content="http://www.engo.me/2021/yuque/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
+<meta property="og:url" content="http://www.ilovein.cn/2021/yuque/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
 <meta property="og:site_name" content="啤酒小龙虾">
 <meta property="og:description" content="最近在科学工具不太稳定，急需一台 backup 来自动切换以备不时之需。之前听说过 Oracle Cloud VPS 可以永久免费使用，这次尝试白嫖下，没想到一下就成功了。故作次记录 前提条件：你必须要要有张信用卡，可以是 VSIA，MasterCard 都行，会进行扣款认证。你可能需要一把梯子，我的移动的网有时候会很访问很慢 注册 &amp; 绑卡https:&#x2F;&#x2F;signup.cloud.ora">
 <meta property="og:locale" content="zh_CN">
@@ -43,7 +43,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2021/png/218708/1622387871475-6122b79a-8d6a-4a16-894e-9d1d2e0d077d.png#align=left&display=inline&height=435&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1112&originWidth=778&size=408354&status=done&style=none&width=304">
 
-<link rel="canonical" href="http://www.engo.me/2021/yuque/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
+<link rel="canonical" href="http://www.ilovein.cn/2021/yuque/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
 
 
 <script id="page-configurations">
@@ -162,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.engo.me/2021/yuque/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
+    <link itemprop="mainEntityOfPage" href="http://www.ilovein.cn/2021/yuque/%E8%96%85%E7%BE%8E%E5%B8%9D%E4%BC%81%E4%B8%9A%E7%BE%8A%E6%AF%9B-%E7%99%BD%E5%AB%96Oracle%20cloud%20%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9VPS.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/touxiang.jpg">
@@ -347,7 +347,7 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://www.engo.me/" title="http:&#x2F;&#x2F;www.engo.me">Title</a>
+          <a href="http://www.engo.me/" title="http:&#x2F;&#x2F;www.engo.me" rel="noopener" target="_blank">Title</a>
         </li>
     </ul>
   </div>
